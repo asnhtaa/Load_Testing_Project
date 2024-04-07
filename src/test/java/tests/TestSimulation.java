@@ -4,14 +4,94 @@ import io.gatling.javaapi.core.Simulation;
 
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static protocols.Protocol.httpProtocol;
-import static scenarios.TvMazeShowScenarios.searchShowAndLookup;
+import static scenarios.TvMazeShowScenarios.*;
 
 public class TestSimulation extends Simulation {
     {
         setUp(
                 searchShowAndLookup
                         .injectOpen(incrementUsersPerSec(1)
-                                .times(99)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndCheckMainInformation
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndAlternateLists
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveEpisode
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveEpisodeByDate
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndShowSeasons
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndGetEpisodesInSeason
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveCast
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveCrew
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveAliases
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndEpisodeCheck
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
                                 .eachLevelLasting(1)
                                 .separatedByRampsLasting(1)
                                 .startingFrom(1))
