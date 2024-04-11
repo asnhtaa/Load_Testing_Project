@@ -9,6 +9,7 @@ public class Protocol {
 
     public static HttpProtocolBuilder httpProtocol = HttpDsl
             .http.baseUrl("https://api.tvmaze.com")
+            .disableFollowRedirect()
             .contentTypeHeader("application/json; charset=UTF-8")
             .acceptHeader("application/json")
             .acceptLanguageHeader("ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7")
