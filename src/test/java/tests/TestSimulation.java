@@ -33,14 +33,6 @@ public class TestSimulation extends Simulation {
                                 .startingFrom(1))
                         .protocols(httpProtocol),
 
-                searchShowAndRetrieveEpisode
-                        .injectOpen(incrementUsersPerSec(1)
-                                .times(2)
-                                .eachLevelLasting(1)
-                                .separatedByRampsLasting(1)
-                                .startingFrom(1))
-                        .protocols(httpProtocol),
-
                 searchShowAndRetrieveEpisodeByDate
                         .injectOpen(incrementUsersPerSec(1)
                                 .times(2)
@@ -88,7 +80,6 @@ public class TestSimulation extends Simulation {
                                 .separatedByRampsLasting(1)
                                 .startingFrom(1))
                         .protocols(httpProtocol),
-
                 searchShowAndEpisodeCheck
                         .injectOpen(incrementUsersPerSec(1)
                                 .times(2)
