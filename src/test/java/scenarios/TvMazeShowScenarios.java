@@ -40,4 +40,7 @@ public class TvMazeShowScenarios {
 
     public static ScenarioBuilder searchShowAndRetrieveAliases = scenario("Search show by characteristics, then retrieve aliases for the second show")
             .exec(showSearch, showAliases);
+
+    public static ScenarioBuilder searchShowAndRetrieveImagesFromShow = scenario("Search show by characteristics, then retrieve images for the second show")
+            .exec(showSearch, showImages);
 }

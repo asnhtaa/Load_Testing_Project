@@ -6,6 +6,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 
 public class ShowInformation {
+
     public static ChainBuilder showEpisodeList = exec(http("/shows/{showId}/episodes")
             .get("/shows/${showId}/episodes")
             .check(status().is(200))
@@ -44,7 +45,8 @@ public class ShowInformation {
             .check(jsonPath("$[0].name").exists())
             .check(jsonPath("$[0].season").exists())
             .check(jsonPath("$[0].number").exists())
-            .check(jsonPath("$[0].airdate").is("2013-10-22")));
+            .check(jsonPath("$[0].airdate").is("2013-10-22"))
+            .check(jsonPath("$[0].id").saveAs("episodeId")));
 
     public static ChainBuilder seasonEpisodes = exec(http("/seasons/{showId}/episodes")
             .get("/seasons/${showId}/episodes")
@@ -52,7 +54,9 @@ public class ShowInformation {
             .check(jsonPath("$[*].id").notNull())
             .check(jsonPath("$[*].name").notNull())
             .check(jsonPath("$[*].season").notNull())
-            .check(jsonPath("$[*].number").notNull()));
+            .check(jsonPath("$[*].number").notNull())
+            .check(jsonPath("$[5].id").saveAs("episodeId"))
+            .check(jsonPath("$[5].name").saveAs("episodeName")));
 
     public static ChainBuilder showSeasons = exec(http("/shows/{showId}/seasons")
             .get("/shows/${showId}/seasons")
@@ -79,4 +83,11 @@ public class ShowInformation {
             .check(status().is(200))
             .check(jsonPath("$[*].name").notNull())
             .check(jsonPath("$[*].country.name").notNull()));
+
+    public static ChainBuilder showImages = exec(http("/shows/{showId}/images")
+            .get("/shows/${showId}/images")
+            .check(status().is(200))
+            .check(jsonPath("$[*].resolutions.original.url").notNull())
+            .check(jsonPath("$[*].resolutions.original.width").notNull())
+            .check(jsonPath("$[*].resolutions.original.height").notNull()));
 }
