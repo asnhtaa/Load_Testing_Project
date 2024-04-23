@@ -5,6 +5,7 @@ import io.gatling.javaapi.core.Simulation;
 import static io.gatling.javaapi.core.CoreDsl.*;
 import static protocols.Protocol.httpProtocol;
 import static scenarios.TvMazeEpisodeScenarios.*;
+import static scenarios.TvMazePeopleScenarios.*;
 import static scenarios.TvMazeShowScenarios.*;
 
 public class TestSimulation extends Simulation {
@@ -115,6 +116,46 @@ public class TestSimulation extends Simulation {
                         .protocols(httpProtocol),
 
                 searchShowAndRetrieveEpisodeGuestCrew
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveEpisode
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveMainInformation
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveCastCredits
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveCrewCredits
+                        .injectOpen(incrementUsersPerSec(1)
+                                .times(2)
+                                .eachLevelLasting(1)
+                                .separatedByRampsLasting(1)
+                                .startingFrom(1))
+                        .protocols(httpProtocol),
+
+                searchShowAndRetrieveGuestCastCredits
                         .injectOpen(incrementUsersPerSec(1)
                                 .times(2)
                                 .eachLevelLasting(1)
